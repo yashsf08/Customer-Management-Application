@@ -7,6 +7,7 @@ class Customer(models.Model):
     """
     Description: Model Description
     """
+
     name = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
@@ -55,7 +56,6 @@ class Order(models.Model):
         ("Out for Delivery", "Out for Delivery"),
         ("Delivered", "Delivered"),
     )
-
     customer = models.ForeignKey(
         Customer, null=True, on_delete=models.SET_NULL)
     product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
