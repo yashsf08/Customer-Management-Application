@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/home/kurosaki-kun/anaconda3/envs/django-dev/bin/python"
+    "python.pythonPath": "/home/kurosaki-kun/anaconda3/envs/django-dev/bin/python",
     // my custom settings
     "editor.formatOnSave": true,
     "editor.rulers": [
@@ -20,5 +20,6 @@
     "python.linting.pylintArgs": [
         "--load-plugins",
         "pylint_django"
-    ]
+    ],
+    "html.format.templating": true
 }
