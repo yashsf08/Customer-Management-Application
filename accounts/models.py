@@ -1,13 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 
 class Customer(models.Model):
-    """
-    Description: Model Description
-    """
 
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
@@ -18,9 +17,6 @@ class Customer(models.Model):
 
 
 class Tag(models.Model):
-    """
-    Description: Model Description
-    """
     name = models.CharField(max_length=200, null=True)
 
     def __str__(self):
@@ -28,9 +24,6 @@ class Tag(models.Model):
 
 
 class Product(models.Model):
-    """
-    Description: Model Description
-    """
     CATEGORY = (
         ("Indoor", "Indoor"),
         ("Out door", "Out door"),
@@ -48,9 +41,6 @@ class Product(models.Model):
 
 
 class Order(models.Model):
-    """
-    Description: Model Description
-    """
     STATUS = (
         ("Pending", "Pending"),
         ("Out for Delivery", "Out for Delivery"),
@@ -64,7 +54,4 @@ class Order(models.Model):
     note = models.CharField(max_length=1000, null=True)
 
     def __str__(self):
-        """
-        docstring
-        """
         return self.product.name
