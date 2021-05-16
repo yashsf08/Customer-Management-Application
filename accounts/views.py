@@ -69,7 +69,23 @@ def logoutUser(request):
     return redirect('login')
 
 
+def userPage(request):
+
+    orders = request.user.customer.order_set.all()
+    total_orders = orders.count()
+    delivered = orders.filter(status="Delivered").count()
+    pending = orders.filter(status="Pending").count()
+    context = {
+        'orders': orders,
+        'total_orders': total_orders,
+        'delivered': delivered,
+        'pending': pending,
+    }
+    return render(request, 'accounts/user.html', context)
+
+
 @login_required(login_url='login')
+<<<<<<< HEAD
 @allowed_users(allowed_roles=['customer'])
 def userPage(request):
 
@@ -87,6 +103,8 @@ def userPage(request):
 
 
 @login_required(login_url='login')
+=======
+>>>>>>> 512c91f357561100646b0d30601e7f5ae4a78ccc
 @admin_only
 def home(request):
     orders = Order.objects.all()
